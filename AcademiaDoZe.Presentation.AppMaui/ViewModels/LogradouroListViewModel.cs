@@ -37,6 +37,8 @@ namespace AcademiaDoZe.Presentation.AppMaui.ViewModels
                 await Shell.Current.DisplayAlert("Erro", $"Erro ao navegar para tela de cadastro: {ex.Message}", "OK");
             }
         }
+
+
         [RelayCommand]
         private async Task EditLogradouroAsync(LogradouroDTO logradouro)
         {

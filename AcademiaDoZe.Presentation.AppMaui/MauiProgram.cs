@@ -21,6 +21,7 @@ namespace AcademiaDoZe.Presentation.AppMaui
             builder.Services.AddTransient<DashboardListViewModel>();
             builder.Services.AddTransient<LogradouroListViewModel>();
             builder.Services.AddTransient<LogradouroViewModel>();
+
             // Registrar Views
             builder.Services.AddTransient<DashboardListPage>();
             builder.Services.AddTransient<LogradouroListPage>();

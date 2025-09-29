@@ -40,7 +40,11 @@ namespace AcademiaDoZe.Infrastructure.Repositories
                 }
                 return entity;
             }
-            catch (DbException ex) { throw new InvalidOperationException($"ERRO_ADD_LOGRADOURO", ex); }
+            catch (DbException ex)
+            {
+                Console.WriteLine($"AQUI O ERRRO >>>> SQL Error: {ex.Message}");
+                throw new InvalidOperationException($"ERRO_ADD_LOGRADOURO", ex);
+            }
         }
         public override async Task<Logradouro> Atualizar(Logradouro entity)
         {
