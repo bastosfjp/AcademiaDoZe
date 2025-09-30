@@ -8,6 +8,7 @@ public partial class ConfigPage : ContentPage
     {
         InitializeComponent();
         CarregarTema();
+        CarregarBanco();
     }
     private void CarregarTema()
     {
@@ -24,6 +25,38 @@ public partial class ConfigPage : ContentPage
         // Navegar para dashboard
         await Shell.Current.GoToAsync("//dashboard");
     }
+
+    // Banco de Dados
+    private void CarregarBanco()
+    {
+        foreach (var tipo in Enum.GetValues<EAppDatabaseType>())
+        {
+            DatabaseTypePicker.Items.Add(tipo.ToString());
+        }
+        // Carregar os dados existentes, ou valores padrão, ao abrir a página
+        ServidorEntry.Text = Preferences.Get("Servidor", "127.0.0.1,1433");
+        BancoEntry.Text = Preferences.Get("Banco", "db_academia_do_ze");
+        UsuarioEntry.Text = Preferences.Get("Usuario", "sa");
+        SenhaEntry.Text = Preferences.Get("Senha", "abcBolinhas12345");
+        ComplementoEntry.Text = Preferences.Get("Complemento", "TrustServerCertificate=True;Encrypt=False;");
+        DatabaseTypePicker.SelectedItem = Preferences.Get("DatabaseType", EAppDatabaseType.SqlServer.ToString());
+    }
+    private async void OnSalvarBdClicked(object sender, EventArgs e)
+    {
+        Preferences.Set("Servidor", ServidorEntry.Text);
+        Preferences.Set("Banco", BancoEntry.Text);
+        Preferences.Set("Usuario", UsuarioEntry.Text);
+        Preferences.Set("Senha", SenhaEntry.Text);
+        Preferences.Set("Complemento", ComplementoEntry.Text);
+        Preferences.Set("DatabaseType", DatabaseTypePicker.SelectedItem.ToString());
+        // Disparar a mensagem para recarga dinâmica
+        WeakReferenceMessenger.Default.Send(new BancoPreferencesUpdatedMessage("BancoAlterado"));
+        await DisplayAlert("Sucesso", "Dados salvos com sucesso!", "OK");
+        // Navegar para dashboard
+        await Shell.Current.GoToAsync("//dashboard");
+    }
+
+
     private async void OnCancelarClicked(object sender, EventArgs e)
     {
         // retornar para dashboard

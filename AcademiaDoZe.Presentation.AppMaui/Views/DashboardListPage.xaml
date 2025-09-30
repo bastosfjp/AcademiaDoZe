@@ -27,6 +27,7 @@ Title="{Binding Title}">
                         <TapGestureRecognizer Command="{Binding NavigateToLogradourosCommand}"/>
                     </Border.GestureRecognizers>
                     <StackLayout Spacing="10">
+                        <Label FontFamily="MaterialIcons" Text="&#xe7f1;" Style="{StaticResource SubHeadline}" HorizontalTextAlignment="Center" />
                         <Label Text="{Binding TotalLogradouros}" Style="{StaticResource SubHeadline}"/>
                         <Label Text="Logradouros" HorizontalTextAlignment="Center"/>
                     </StackLayout>
@@ -39,6 +40,7 @@ Title="{Binding Title}">
                         <TapGestureRecognizer Command="{Binding NavigateToAlunosCommand}"/>
                     </Border.GestureRecognizers>
                     <StackLayout Spacing="10">
+                        <Label FontFamily="MaterialIcons" Text="e80c;" Style="{StaticResource SubHeadline}" HorizontalTextAlignment="Center" />
                         <Label Text="{Binding TotalAlunos}" Style="{StaticResource SubHeadline}"/>
                         <Label Text="Alunos" HorizontalTextAlignment="Center"/>
                     </StackLayout>
