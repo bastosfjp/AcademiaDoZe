@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiaDoZe.Domain", "AcademiaDoZe.Domain\AcademiaDoZe.Domain.csproj", "{C6555DC7-18CC-495E-A45F-B25E3EB1AD68}"
 EndProject
@@ -10,6 +10,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiaDoZe.Application", "AcademiaDoZe.Application\AcademiaDoZe.Application.csproj", "{0ED22E21-B7A5-4B88-B37D-5677A3A0429A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiaDoZe.Presentation.AppMaui", "AcademiaDoZe.Presentation.AppMaui\AcademiaDoZe.Presentation.AppMaui.csproj", "{34AEC77B-FE36-43C3-8EF9-71F7C5D40358}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiaDoZe.Infrastructure.Tests", "AcademiaDoZe.Infrastructure.Tests\AcademiaDoZe.Infrastructure.Tests.csproj", "{C5F196B8-8BE4-461E-8470-C3223580FF4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiaDoZe.Domain.Tests", "AcademiaDoZe.Domain.Tests\AcademiaDoZe.Domain.Tests.csproj", "{661821DC-4D4D-4B89-819E-03A981B594A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiaDoZe.Application.Tests", "AcademiaDoZe.Application.Tests\AcademiaDoZe.Application.Tests.csproj", "{F2935135-C243-486F-B836-2C98C02BF815}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +40,18 @@ Global
 		{34AEC77B-FE36-43C3-8EF9-71F7C5D40358}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{34AEC77B-FE36-43C3-8EF9-71F7C5D40358}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34AEC77B-FE36-43C3-8EF9-71F7C5D40358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5F196B8-8BE4-461E-8470-C3223580FF4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5F196B8-8BE4-461E-8470-C3223580FF4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5F196B8-8BE4-461E-8470-C3223580FF4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5F196B8-8BE4-461E-8470-C3223580FF4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{661821DC-4D4D-4B89-819E-03A981B594A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{661821DC-4D4D-4B89-819E-03A981B594A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{661821DC-4D4D-4B89-819E-03A981B594A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{661821DC-4D4D-4B89-819E-03A981B594A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2935135-C243-486F-B836-2C98C02BF815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2935135-C243-486F-B836-2C98C02BF815}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2935135-C243-486F-B836-2C98C02BF815}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2935135-C243-486F-B836-2C98C02BF815}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

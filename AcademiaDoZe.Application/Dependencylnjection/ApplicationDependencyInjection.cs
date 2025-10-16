@@ -13,7 +13,7 @@ namespace AcademiaDoZe.Application.DependencyInjection
             // Registra os serviços da camada de aplicação
             services.AddTransient<ILogradouroService, LogradouroService>();
             services.AddTransient<IColaboradorService, ColaboradorService>();
-            //services.AddTransient<IAlunoService, AlunoService>();
+            services.AddTransient<IAlunoService, AlunoService>();
             //services.AddTransient<IMatriculaService, MatriculaService>();
             //services.AddTransient<IAcessoService, AcessoService>();
             // AddScoped: cria uma instância do serviço por requisição HTTP.

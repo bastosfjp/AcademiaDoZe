@@ -1,6 +1,5 @@
 ﻿using AcademiaDoZe.Application.DTOs;
 using AcademiaDoZe.Domain.Entities;
-
 namespace AcademiaDoZe.Application.Mappings
 {
     public static class LogradouroMappings

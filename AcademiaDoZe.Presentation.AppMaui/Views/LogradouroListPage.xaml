@@ -21,7 +21,7 @@ HorizontalOptions="Start" HeightRequest="40" VerticalOptions="Center"/>
 
                 <!-- Botão de busca -->
 
-                <Button Grid.Column="4" Text="Buscar" Style="{StaticResource ButtonPrimary}" FontSize="14" WidthRequest="80" HeightRequest="40" Margin="0,0,0,0"
+                <Button Grid.Column="4" FontFamily="MaterialIcons" Text="&#xe8b6;" Margin="0,0,0,0"
 
 Command="{Binding SearchLogradourosCommand}"/>
             </Grid>
@@ -33,7 +33,7 @@ Command="{Binding SearchLogradourosCommand}"/>
                     <CollectionView.EmptyView>
                         <StackLayout VerticalOptions="Center">
                             <Label Text="Nenhum logradouro encontrado" HorizontalOptions="Center" Style="{StaticResource SubHeadline}"/>
-                            <Button Text="Adicionar Primeiro Logradouro" Command="{Binding AddLogradouroCommand}" Style="{StaticResource ButtonPrimary}" HeightRequest="50" Margin="0,20,0,0"/>
+                            <Button Command="{Binding AddLogradouroCommand}" FontFamily="MaterialIcons" Text="&#xe145;" HeightRequest="50" Margin="0,20,0,0"/>
                         </StackLayout>
                     </CollectionView.EmptyView>
                     <CollectionView.ItemTemplate>
@@ -58,8 +58,8 @@ Command="{Binding SearchLogradourosCommand}"/>
 
                                         <!-- Botões de Ação -->
 
-                                        <Button Grid.Row="0" Grid.Column="1" Text="Editar" Style="{StaticResource ButtonSmall}" Margin="4,0" Clicked="OnEditButtonClicked" />
-                                        <Button Grid.Row="0" Grid.Column="2" Text="Excluir" Style="{StaticResource ButtonDanger}" Margin="4,0" Clicked="OnDeleteButtonClicked" />
+                                        <Button Grid.Row="0" Grid.Column="1" FontFamily="MaterialIcons" Text="&#xe3c9;" Style="{StaticResource SubHeadline}" Margin="4,0" Clicked="OnEditButtonClicked" />
+                                        <Button Grid.Row="0" Grid.Column="2" FontFamily="MaterialIcons" Text="&#xe872;" Style="{StaticResource SubHeadline}" Margin="4,0" Clicked="OnDeleteButtonClicked"  />
                                     </Grid>
                                 </Border>
                             </Grid>

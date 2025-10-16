@@ -40,7 +40,7 @@ Title="{Binding Title}">
                         <TapGestureRecognizer Command="{Binding NavigateToAlunosCommand}"/>
                     </Border.GestureRecognizers>
                     <StackLayout Spacing="10">
-                        <Label FontFamily="MaterialIcons" Text="e80c;" Style="{StaticResource SubHeadline}" HorizontalTextAlignment="Center" />
+                        <Label FontFamily="MaterialIcons" Text="&#xe80c;" Style="{StaticResource SubHeadline}" HorizontalTextAlignment="Center" />
                         <Label Text="{Binding TotalAlunos}" Style="{StaticResource SubHeadline}"/>
                         <Label Text="Alunos" HorizontalTextAlignment="Center"/>
                     </StackLayout>
@@ -53,6 +53,7 @@ Title="{Binding Title}">
                         <TapGestureRecognizer Command="{Binding NavigateToColaboradoresCommand}"/>
                     </Border.GestureRecognizers>
                     <StackLayout Spacing="10">
+                        <Label FontFamily="MaterialIcons" Text="&#xe85e;" Style="{StaticResource SubHeadline}" HorizontalTextAlignment="Center" />
                         <Label Text="{Binding TotalColaboradores}" Style="{StaticResource SubHeadline}"/>
                         <Label Text="Colaboradores" HorizontalTextAlignment="Center"/>
                     </StackLayout>
@@ -65,6 +66,7 @@ Title="{Binding Title}">
                         <TapGestureRecognizer Command="{Binding NavigateToMatriculasCommand}"/>
                     </Border.GestureRecognizers>
                     <StackLayout Spacing="10">
+                        <Label FontFamily="MaterialIcons" Text="&#xef42;" Style="{StaticResource SubHeadline}" HorizontalTextAlignment="Center" />
                         <Label Text="{Binding TotalMatriculas}" Style="{StaticResource SubHeadline}"/>
                         <Label Text="Matrículas" HorizontalTextAlignment="Center"/>
                     </StackLayout>
