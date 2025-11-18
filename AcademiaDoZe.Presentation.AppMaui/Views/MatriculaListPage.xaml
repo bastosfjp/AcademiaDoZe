@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+x:Class="AcademiaDoZe.Presentation.AppMaui.Views.MatriculaListPage"
+xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
+x:DataType="vm:MatriculaListViewModel"
+xmlns:dto="clr-namespace:AcademiaDoZe.Application.DTOs;assembly=AcademiaDoZe.Application"
+xmlns:converters="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Converters"
+Title="{Binding Title}">
+
+    <!-- <ContentPage.Resources> é o dicionário de recursos local da página. -->
+    <!-- Aqui vamos criar um DataTemplate com toda a estrutura para exibir os dados de um colaborador, de forma individual.
+Depois ela será utilizada dentro da estrutura que vai exibir os dados, no caso um CollectionView.
+Repare no uso de Converter={StaticResource FotoToImageSourceConverter}, para converter o array de bytes em ImageSource.
+Também utilizamos Converter={StaticResource EnumDisplay}}, para exibir o valor do Enum com o atributo Display.
+Utilizamos OnIdiom para ajustar propriedades conforme o tipo de dispositivo: Phone, Tablet, Desktop, TV, Watch e Default. -->
+    <ContentPage.Resources>
+        <converters:FotoToImageSourceConverter x:Key="FotoToImageSourceConverter" />
+        <converters:EnumDisplayConverter x:Key="EnumDisplay" />
+        <!-- criamos um template único para Phone, Tablet, Desktop, TV, Watch e Default -->
+        <DataTemplate x:Key="MatriculaItemTemplate" x:DataType="dto:MatriculaDTO">
+            <Grid Padding="1" Margin="5">
+                <Border Style="{StaticResource CardBorder}" Margin="10">
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                  ColumnDefinitions="Auto,*,Auto">
+
+                        <!-- Linha 0: Foto do aluno e Laudo médico lado a lado -->
+                        <HorizontalStackLayout Grid.Row="0" Grid.ColumnSpan="3" Spacing="15" Margin="0,0,0,10" HorizontalOptions="Start">
+                            <!-- Foto do aluno -->
+                            <Image
+                            Source="{Binding AlunoMatricula.Foto, Converter={StaticResource FotoToImageSourceConverter}}"
+                            Aspect="AspectFill"
+                             HeightRequest="110"
+                             WidthRequest="110" />
+
+                            <!-- Laudo médico -->
+                            <Image
+                               Source="{Binding LaudoMedico, Converter={StaticResource FotoToImageSourceConverter}}"
+                            Aspect="AspectFill"
+                            HeightRequest="110"
+                            WidthRequest="110">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MatriculaListViewModel}}, Path=ExibirLaudoCommand}"
+                                        CommandParameter="{Binding}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </HorizontalStackLayout>
+
+
+                        <!-- Nome do aluno -->
+                        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                       Text="{Binding AlunoMatricula.Nome}"
+                       FontAttributes="Bold" Margin="0,0,0,5"/>
+
+                        <!-- Dados -->
+                        <Label Grid.Row="2" Grid.Column="0" Text="{Binding Plano, Converter={StaticResource EnumDisplay},  StringFormat='Plano: {0}'}"  Margin="0,0,0,5"/>
+                        <Label Grid.Row="3" Grid.Column="0" Text="{Binding DataInicio, StringFormat='Início: {0:dd/MM/yyyy}'}" Margin="0,0,0,5"/>
+                        <Label Grid.Row="4" Grid.Column="0" Text="{Binding DataFim,  StringFormat='Fim: {0:dd/MM/yyyy}'}" Margin="0,0,0,5"/>
+                        <Label Grid.Row="5" Grid.Column="0" Text="{Binding Objetivo,  StringFormat='Objetivo: {0}'}" Margin="0,0,0,5"/>
+                        <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding RestricoesMedicas, Converter={StaticResource EnumDisplay},  StringFormat='Restrições: {0}'}" 
+                               
+    Margin="0,0,0,5"
+    LineBreakMode="WordWrap"
+    MaxLines="3"
+    HorizontalOptions="Fill"
+    VerticalOptions="Start" />
+                        <!-- CPF / Nascimento / Telefone -->
+                        <Label Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,0,5">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="CPF: "/>
+                                    <Span Text="{Binding AlunoMatricula.Cpf}"/>
+                                    <Span Text=", "/>
+                                    <Span Text="Nascimento: "/>
+                                    <Span Text="{Binding AlunoMatricula.DataNascimento}"/>
+                                    <Span Text=", "/>
+                                    <Span Text="Telefone: "/>
+                                    <Span Text="{Binding AlunoMatricula.Telefone}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <Label Grid.Row="9" Grid.Column="0" Text="{Binding Numero}" Margin="0,0,0,5"/>
+                        <Label Grid.Row="10" Grid.Column="0" Text="{Binding Complemento}" Margin="0,0,0,5"/>
+                        <Label Grid.Row="9" Grid.Column="0" Text="{Binding Id, StringFormat='Registro: {0}'}" FontAttributes="Bold" Margin="0,0,0,5"/>
+
+                        <!-- Botões -->
+                        <Button Grid.Row="0" Grid.Column="2" Text="" Style="{StaticResource ButtonSmall}" Margin="6,0,0,75" Clicked="OnEditButtonClicked">
+                            <Button.ImageSource>
+                                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe3c9;" />
+                            </Button.ImageSource>
+                        </Button>
+
+                        <Button Grid.Row="0" Grid.Column="2" Text="" Style="{StaticResource ButtonDanger}" Margin="6,50,0,0" Clicked="OnDeleteButtonClicked">
+                            <Button.ImageSource>
+                                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe872;" />
+                            </Button.ImageSource>
+                        </Button>
+
+                    </Grid>
+                </Border>
+            </Grid>
+        </DataTemplate>
+
+
+    </ContentPage.Resources>
+
+    <!-- estrutura principal da página -->
+    <Grid RowDefinitions="Auto,*">
+        <!-- Search Bar -->
+        <Border Grid.Row="0" Style="{StaticResource CardBorder}" Margin="15,10">
+            <Grid ColumnDefinitions="Auto,10,*,10,Auto" VerticalOptions="Center">
+                <Picker Grid.Column="0" Title="" ItemsSource="{Binding FilterTypes}" SelectedItem="{Binding SelectedFilterType}" WidthRequest="110" HorizontalOptions="Start" HeightRequest="40"
+VerticalOptions="Center"/>
+                <Entry Grid.Column="2" Text="{Binding SearchText}" TextChanged="OnSearchDebounceTextChanged" Placeholder="Digite o valor..." HeightRequest="40" VerticalOptions="Center" />
+                <Button Grid.Column="4" Text="" Style="{StaticResource ButtonPrimary}" FontSize="14" WidthRequest="80" HeightRequest="40" Command="{Binding SearchMatriculasCommand}">
+                    <Button.ImageSource>
+                        <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe8b6;" />
+                    </Button.ImageSource>
+                </Button>
+            </Grid>
+        </Border>
+
+        <!-- lista/grade + FAB -->
+        <!-- ajuste conforme tipo: Phone, Tablet, Desktop, TV, Watch e Default -->
+        <!-- exibe o template criado acima: ColaboradorItemTemplate -->
+        <Grid Grid.Row="1">
+            <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
+                <!-- mostra os dados dos colaboradores -->
+                <CollectionView ItemsSource="{Binding Matriculas}" SelectionMode="None" Margin="10">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical">
+                            <!-- Span conforme OnIdiom - utilizando objeto filho -->
+                            <!-- lista ou grade -->
+                            <GridItemsLayout.Span>
+
+                                <OnIdiom x:TypeArguments="x:Int32">
+                                    <OnIdiom.Phone>1</OnIdiom.Phone>
+                                    <OnIdiom.Default>1</OnIdiom.Default>
+                                    <OnIdiom.Tablet>2</OnIdiom.Tablet>
+                                    <OnIdiom.Desktop>3</OnIdiom.Desktop>
+                                    <OnIdiom.TV>4</OnIdiom.TV>
+                                </OnIdiom>
+                            </GridItemsLayout.Span>
+                        </GridItemsLayout>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.EmptyView>
+                        <StackLayout VerticalOptions="Center">
+                            <Label Text="Nenhuma Matrícula encontrada" HorizontalOptions="Center" Style="{StaticResource SubHeadline}"/>
+                            <Button Text="Adicionar Primeira Matrícula" Command="{Binding AddMatriculaCommand}" Style="{StaticResource ButtonPrimary}" HeightRequest="50" Margin="0,20,0,0"/>
+                        </StackLayout>
+                    </CollectionView.EmptyView>
+                    <!-- utiliza o DataTemplate criado acima -->
+
+                    <CollectionView.ItemTemplate>
+
+                        <StaticResource Key="MatriculaItemTemplate" />
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+            <!-- FAB -->
+            <Button Text="" Command="{Binding AddMatriculaCommand}" Style="{StaticResource ButtonPrimary}" WidthRequest="56" HeightRequest="56" HorizontalOptions="End" VerticalOptions="End" Margin="20">
+                <Button.Shadow>
+                    <Shadow Brush="{AppThemeBinding Light=Black, Dark=Gray}" Offset="0,4" Radius="8" Opacity="0.3"/>
+                </Button.Shadow>
+                <Button.ImageSource>
+                    <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe145;" />
+                </Button.ImageSource>
+            </Button>
+        </Grid>
+        <ActivityIndicator Grid.Row="0" Grid.RowSpan="2" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center"/>
+    </Grid>
+
+</ContentPage>

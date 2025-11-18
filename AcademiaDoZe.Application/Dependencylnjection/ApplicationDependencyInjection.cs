@@ -1,5 +1,6 @@
 ﻿using AcademiaDoZe.Application.Interfaces;
 using AcademiaDoZe.Application.Services;
+using AcademiaDoZe.Application_.Services;
 using AcademiaDoZe.Domain.Repositories;
 using AcademiaDoZe.Infrastructure.Data;
 using AcademiaDoZe.Infrastructure.Repositories;
@@ -14,7 +15,7 @@ namespace AcademiaDoZe.Application.DependencyInjection
             services.AddTransient<ILogradouroService, LogradouroService>();
             services.AddTransient<IColaboradorService, ColaboradorService>();
             services.AddTransient<IAlunoService, AlunoService>();
-            //services.AddTransient<IMatriculaService, MatriculaService>();
+            services.AddTransient<IMatriculaService, MatriculaService>();
             //services.AddTransient<IAcessoService, AcessoService>();
             // AddScoped: cria uma instância do serviço por requisição HTTP.
             // AddSingleton: cria uma única instância do serviço durante toda a vida útil da aplicação.

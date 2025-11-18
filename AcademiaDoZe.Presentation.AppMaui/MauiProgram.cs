@@ -13,7 +13,7 @@ namespace AcademiaDoZe.Presentation.AppMaui
             .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
             {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular"); 
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 fonts.AddFont("MaterialIcons-Regular.ttf", "MaterialIcons");
             });
@@ -23,26 +23,23 @@ namespace AcademiaDoZe.Presentation.AppMaui
             builder.Services.AddTransient<DashboardListViewModel>();
             builder.Services.AddTransient<LogradouroListViewModel>();
             builder.Services.AddTransient<LogradouroViewModel>();
-
+            builder.Services.AddTransient<ColaboradorListViewModel>();
+            builder.Services.AddTransient<ColaboradorViewModel>();
+            builder.Services.AddTransient<AlunoListViewModel>();
+            builder.Services.AddTransient<AlunoViewModel>();
+            builder.Services.AddTransient<MatriculaListViewModel>();
+            builder.Services.AddTransient<MatriculaViewModel>();
             // Registrar Views
             builder.Services.AddTransient<DashboardListPage>();
             builder.Services.AddTransient<LogradouroListPage>();
             builder.Services.AddTransient<LogradouroPage>();
             builder.Services.AddTransient<ConfigPage>();
-
-            // Registrar ViewModels
-            builder.Services.AddTransient<ColaboradorListViewModel>();
-            builder.Services.AddTransient<ColaboradorViewModel>();
-            // Registrar Views
             builder.Services.AddTransient<ColaboradorListPage>();
             builder.Services.AddTransient<ColaboradorPage>();
-
-            // Registrar ViewModels
-            builder.Services.AddTransient<AlunoListViewModel>();
-            builder.Services.AddTransient<AlunoViewModel>();
-            // Registrar Views
             builder.Services.AddTransient<AlunoListPage>();
             builder.Services.AddTransient<AlunoPage>();
+            builder.Services.AddTransient<MatriculaListPage>();
+            builder.Services.AddTransient<MatriculaPage>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
